@@ -19,7 +19,8 @@ $jenkins_url = '';
 
 // Jenkins connection token.
 $jenkins_token = '';
-
+$username='';
+$password='';
 // Get incoming.
 $incoming = json_decode($_POST['payload']);
 
@@ -52,11 +53,10 @@ if ($build_allow) {
   $url = $jenkins_url . '' . $_GET['project_to_build'] . '/build?token=' . $jenkins_token;
 
   $ch = curl_init($url);
-  curl_setopt($ch, CURLOPT_POST, 1);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
   curl_setopt($ch, CURLOPT_HEADER, 0);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
 
   $response = curl_exec($ch);
   curl_close($ch);
