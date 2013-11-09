@@ -14,6 +14,8 @@ Set the following url as your POST url: http://mydomain.com/index.php?project_to
 4 setup the correct settings
 - $jenkins_url
 - $jenkins_token inside the index.php file.
+- $username
+- $password
 5 You're up and running!
 
 
